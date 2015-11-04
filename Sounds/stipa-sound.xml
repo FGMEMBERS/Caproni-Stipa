@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+ 
+<PropertyList>
+
+  <fx>
+ 
+    <!-- Engine 1 -->
+    <crank>
+      <name>engstart</name>
+      <path>Aircraft/Caproni-Stipa/Sounds/startup.wav</path>
+      <property>/engines/engine[0]/cranking</property>
+      <volume>
+        <property>/sim/model/sound/volume</property>
+      </volume>
+      <reference-dist>5</reference-dist>
+      <max-dist>2</max-dist>
+    </crank>
+
+    <crank>
+      <name>crank1</name>
+      <mode>looped</mode>
+      <path>Sounds/cranking.wav</path>
+      <condition>
+        <property>/engines/engine[0]/cranking</property>
+        <not>
+          <property>/engines/engine[0]/running</property>
+        </not>
+      </condition>
+      <volume>
+        <offset>0.5</offset>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </crank>
+
+    <crank>
+      <name>cough1</name>
+      <path>Sounds/coughing.wav</path>
+      <property>/engines/engine[0]/running</property>
+      <volume>
+        <offset>0.3</offset>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </crank>
+
+    <engine>
+      <name>engine-Midddle</name>
+      <mode>looped</mode>
+      <path>Aircraft/Caproni-Stipa/Sounds/engine-middle.wav</path>
+      <condition>
+        <and>
+          <property>/engines/engine[0]/running</property>
+          <greater-than>
+            <property>engines/engine[0]/rpm</property>
+            <value>10</value>
+          </greater-than>
+          <less-than> 
+            <property>/engines/engine[0]/rpm</property>
+            <value>700</value>
+          </less-than>
+        </and>
+      </condition>
+      <pitch>
+        <property>engines/engine[0]/rpm</property>
+        <factor>0.0005</factor>
+        <min>1.0</min>
+        <max>2.0</max>
+        <offset>0.10</offset>
+      </pitch>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+
+    <engine>
+      <name>engine-High</name>
+      <mode>looped</mode>
+      <path>Aircraft/Caproni-Stipa/Sounds/engine-high.wav</path>
+      <condition>
+        <and>
+          <property>/engines/engine[0]/running</property>
+          <greater-than>
+            <property>engines/engine[0]/rpm</property>
+            <value>700</value>
+          </greater-than>
+          <less-than> 
+            <property>/engines/engine[0]/rpm</property>
+            <value>2500</value>
+          </less-than>
+        </and>
+      </condition>
+      <volume>
+        <property>engines/engine[0]/rpm</property>
+        <min>0.1</min>
+        <max>1.0</max>
+      </volume>
+      <pitch>
+        <property>engines/engine[0]/rpm</property>
+        <factor>0.0005</factor>
+        <min>0.3</min>
+        <max>2.0</max>
+        <offset>0.1</offset>
+      </pitch>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </engine>
+
+    <squeal>
+      <name>squeal</name>
+      <path>Sounds/squeal.wav</path>
+      <condition>
+        <or>
+          <property>/gear/gear[0]/wow</property>
+          <property>/gear/gear[1]/wow</property>
+          <property>/gear/gear[2]/wow</property>
+        </or>
+      </condition>
+      <volume>
+        <property>/velocities/speed-down-fps</property>
+        <factor>0.05</factor>
+        <min>0.1</min>
+      </volume>
+      <volume>
+        <property>/velocities/airspeed-kt</property>
+        <factor>0.01</factor>
+        <offset>0.4</offset>
+      </volume>
+      <pitch>
+        <offset>1.25</offset>
+      </pitch>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </squeal>
+ 
+    <wind>
+      <name>wind</name>
+      <mode>looped</mode>
+      <path>Sounds/wind.wav</path>
+      <property>/velocities/airspeed-kt</property>
+      <volume>
+        <property>/position/altitude-ft</property>
+        <factor>-0.000015</factor>
+        <offset>1.0</offset>
+        <min>0.1</min>
+        <max>1.0</max>
+      </volume>
+      <volume>
+        <property>/velocities/airspeed-kt</property>
+        <factor>0.0015</factor>
+        <min>0.03</min>
+        <max>0.25</max>
+      </volume>
+      <pitch>
+        <property>/velocities/airspeed-kt</property>
+        <factor>0.01</factor>
+        <offset>1.25</offset>
+      </pitch>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </wind>
+ 
+    <stall>
+      <name>stall</name>
+      <path>Sounds/stall.wav</path>
+      <property>/sim/aero/alarms/stall-warning</property>
+      <volume>
+        <property>/velocities/airspeed-kt</property>
+        <min>30.0</min>
+      </volume>
+      <reference-dist>100</reference-dist>
+      <max-dist>1000</max-dist>
+    </stall>
+ 
+  </fx>
+ 
+</PropertyList>

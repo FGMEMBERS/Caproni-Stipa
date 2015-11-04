@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <name>Pilot</name>
+  <weight-lb>200</weight-lb>
+  <max-lb>250</max-lb>
+  <min-lb>100</min-lb>
+  
+</PropertyList>
