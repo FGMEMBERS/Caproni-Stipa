@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Caproni Stipa : BARANGER Emmanuel (2015)
+
+     Sources       : https://en.wikipedia.org/wiki/Stipa-Caproni
+
+     Wingspan      : 14.28 m  ( 46 ft 10 in )
+     Length        :  5.88 m  ( 19 ft  4 in )
+     Height        :  3.00 m  (  9 ft 10 in )
+     Loaded weight :   800 kg (  1760.00 lb )
+     Empty weight  :   700 kg (  1543.23 lb ) 
+     Engine        : 1 de Havilland Gipsy III inline piston engine ( 120 hp )
+     Maximum speed : 131 km/h ( 70.73 kt    )
+     Landing speed :  68 km/h ( 36.71 kt    )
+-->
+
+<airplane mass="1543" version="YASIM_VERSION_CURRENT">
+
+  <!-- Approach configuration -->
+  <approach speed="36" aoa="4" fuel="0.2">
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.3"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="1"/>
+  </approach>
+
+  <!-- Cruise configuration -->
+  <cruise speed="65" alt="2000">
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.9"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="0.65"/>
+  </cruise>
+
+  <!-- pilot's eyepoint -->
+  <cockpit x="1.396" y="0" z="1.662"/>
+
+  <fuselage ax="2.759" ay="0" az="-0.095" bx="-2.085" by="0" bz="-0.095" width="2.08" taper="0.95" midpoint="0.05"/>
+
+  <wing x="0.995" y="0" z="-0.138"
+        chord="2.108"
+        length="7.075"
+        taper="0.65"
+        sweep="0"
+        camber="0.001">
+        <stall aoa="20" width="1" peak="1.5"/>
+        <flap0 start="0.5" end="0.95" lift="1.2" drag="1.1"/>
+
+        <control-input control="FLAP0" axis="/controls/flight/aileron" split="true"/>
+        <control-input control="FLAP0" axis="/controls/flight/aileron-trim" split="true"/>
+
+        <control-output control="FLAP0" side="left" prop="/surface-positions/left-aileron-pos-norm"/>
+        <control-output control="FLAP0" side="right" prop="/surface-positions/right-aileron-pos-norm"/>
+        <control-output control="FLAP0" prop="/surface-positions/aileron-pos-norm"/>
+  </wing>
+
+  <hstab x="-1.470" y="0" z="-0.138"
+         chord="2.610"
+         length="2.5"
+         taper="0.20"
+         sweep="24">
+         <stall aoa="18" width="1" peak="1.5"/>
+         <flap0 start="0" end="1" lift="1.1" drag="1.0"/>
+
+         <control-input axis="/controls/flight/elevator" control="FLAP0"/>
+         <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
+  </hstab>
+
+  <vstab x="-2.230" y="0" z="-1.063" 
+         chord="1.424"
+         length="2.903"
+         taper="0.70"
+         sweep="2">
+         <stall aoa="16" width="1" peak="1.5"/>
+         <flap0 start="0" end="1" lift="1.2" drag="1.2"/>
+
+         <control-input axis="/controls/flight/rudder" control="FLAP0" invert="true"/>
+         <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm" min="1" max="-1"/>
+  </vstab>
+
+  <!-- Engines   source  : https://en.wikipedia.org/wiki/De_Havilland_Gipsy
+
+                 name               : de Havilland Gipsy III
+                 type               : 4-cylinder air-cooled inline piston aircraft engine
+                 power cruise       : 120 hp at 2300 rpm
+                 Compression ratio  : 5.1
+                 weight             : 285 lb ( 129.3 kg )
+  -->
+  <propeller x="2.182" y="0" z="-0.160"
+             mass="285"
+             moment="5"
+             radius="0.92"
+             cruise-speed="65"
+             cruise-rpm="2100"
+             cruise-power="100"
+             cruise-alt="2000"
+             takeoff-power="120"
+             takeoff-rpm="2300">
+             <actionpt x="2.752" y="0" z="-0.158"/>
+             <piston-engine eng-power="120"
+                            eng-rpm="2300" 
+                            alt="0">
+                            <control-input axis="/controls/engines/engine[0]/throttle" control="THROTTLE"/>
+                            <control-input axis="/controls/engines/engine[0]/starter" control="STARTER"/>
+                            <control-input axis="/controls/engines/engine[0]/magnetos" control="MAGNETOS"/>
+                            <control-input axis="/controls/engines/engine[0]/mixture" control="MIXTURE"/>
+             </piston-engine> 
+  </propeller>
+
+  <gear x="1.719" y="1.148" z="-1.727"
+        compression="0.02"
+        sfric="1.1"
+        dfric="0.6">
+        <control-input axis="/controls/gear/brake-left" control="BRAKE" split="true"/>
+        <control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
+  </gear>
+
+  <gear x="1.719" y="-1.148" z="-1.727"
+        compression="0.02"
+        sfric="1.1"
+        dfric="0.6">
+        <control-input axis="/controls/gear/brake-right" control="BRAKE" split="true"/>
+        <control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
+  </gear>
+
+  <gear x="-2.125" y="0" z="-1.418"
+        sfric="1.1"
+        dfric="0.6"
+        compression="0.02">
+        <control-input axis="/controls/flight/rudder" control="STEER" square="true" src0="-1.0" src1="1.0" dst0="0.8" dst1="-0.8"/>
+  </gear>
+
+  <tank x="0.704" y="0" z="-0.391" capacity="72"/> 
+
+  <!-- Mass displacment
+  <ballast x="-2" y="0" z="-1" mass="80"/> -->
+
+</airplane>
