@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+  
+  <path>interior.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>interieur</object-name>
+    <object-name>inttour</object-name>
+    <object-name>planchet</object-name>    
+    <object-name>intporteAG</object-name>
+    <object-name>intporteAD</object-name>
+    <object-name>intporteBG</object-name>
+    <object-name>intporteBD</object-name>
+    
+    <!-- Objets transparents
+    <object-name>intvitres</object-name> -->
+  </animation>
+
+  <!-- working for Rembrandt
+  <effect>
+    <inherits-from>Aircraft/Caproni-Stipa/Models/Effects/Glass/glass</inherits-from>
+    <object-name>intvitres</object-name>
+  </effect> -->
+  
+  <!-- Pilote -->
+  <model>
+    <path>Aircraft/Caproni-Stipa/Models/Pilot/pilot.xml</path>
+    <offsets>
+      <x-m> -1.62800 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  0.91526 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Planche de bord -->
+  <model>
+    <path>Aircraft/Caproni-Stipa/Models/Interior/Panel/panel.xml</path>
+    <offsets>
+      <x-m> -1.79227 </x-m>
+      <y-m>  0.00000 </y-m>
+      <z-m>  1.52611 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- Les portes -->
+  <animation>
+    <name>IntLesPortesAvants</name>
+    <object-name>intporteAG</object-name>
+    <object-name>intporteAD</object-name>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>IntLesPortesAvants</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>intporteAG</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 180 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -1.60424 </x1-m>
+      <y1-m> -0.38665 </y1-m>
+      <z1-m>  1.22636 </z1-m>
+      <x2-m> -1.24659 </x2-m>
+      <y2-m> -0.39773 </y2-m>
+      <z2-m>  1.22636 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>intporteAD</object-name>
+    <property>sim/model/door-positions/crew/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 180 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -1.24659 </x1-m>
+      <y1-m>  0.39773 </y1-m>
+      <z1-m>  1.22636 </z1-m>
+      <x2-m> -1.60424 </x2-m>
+      <y2-m>  0.38665 </y2-m>
+      <z2-m>  1.22636 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <name>IntLesPortesArrieres</name>
+    <object-name>intporteBG</object-name>
+    <object-name>intporteBD</object-name>
+  </animation>
+  
+  <animation>
+    <type>pick</type>
+    <object-name>IntLesPortesArrieres</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.passenger.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>intporteBG</object-name>
+    <property>sim/model/door-positions/passenger/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 180 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -0.94786 </x1-m>
+      <y1-m> -0.38467 </y1-m>
+      <z1-m>  1.22716 </z1-m>
+      <x2-m> -0.50697 </x2-m>
+      <y2-m> -0.35553 </y2-m>
+      <z2-m>  1.21841 </z2-m>
+    </axis>
+  </animation>
+  
+  <animation>
+    <type>rotate</type>
+    <object-name>intporteBD</object-name>
+    <property>sim/model/door-positions/passenger/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 1 </ind><dep> 180 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m> -0.50697 </x1-m>
+      <y1-m>  0.35553 </y1-m>
+      <z1-m>  1.21841 </z1-m>
+      <x2-m> -0.94786 </x2-m>
+      <y2-m>  0.38467 </y2-m>
+      <z2-m>  1.22716 </z2-m>
+    </axis>
+  </animation>
+  
+</PropertyList>
